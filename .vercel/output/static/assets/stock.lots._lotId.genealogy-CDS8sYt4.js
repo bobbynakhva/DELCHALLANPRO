@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-0vZSBttN.js";import{p as t,t as n}from"./index-B5Xm3EbC.js";var r=e();function i(){let{lotId:e}=n.useParams();return(0,r.jsx)(t,{lotId:e})}export{i as component};

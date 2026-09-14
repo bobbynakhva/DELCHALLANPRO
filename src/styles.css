@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #1b2a4a;
+  --color-navy-deep: #121c33;
+  --color-navy-mid: #24375f;
+  --color-brass: #b8860b;
+  --color-brass-deep: #8a6508;
+  --color-brass-soft: #d4a84b;
+  --color-cream: #f4f0e6;
+  --color-cream-deep: #e7e0d0;
+  --color-ink: #1a1712;
+  --color-muted: #6b6458;
+  --color-line: #d4cbb8;
+  --color-paper: #fbf8f1;
+  --color-ok: #2f6b4f;
+  --color-warn: #9a5b12;
+  --color-danger: #8f2d2d;
+  --color-hold: #6b4a16;
+  --font-sans: "IBM Plex Sans", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Source Serif 4", "Palatino Linotype", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --text-micro: 0.6875rem;
+  --text-table: 0.75rem;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --spacing-nav: 15.5rem;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  html,
+  body,
+  #app {
+    min-height: 100%;
+  }
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.app-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-table);
+  font-variant-numeric: tabular-nums;
+}
+.app-table th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: var(--text-micro);
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.45rem 0.55rem;
+  background: color-mix(in oklab, var(--color-cream-deep) 70%, white);
+  white-space: nowrap;
+}
+.app-table td {
+  padding: 0.42rem 0.55rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--color-line) 70%, transparent);
+  vertical-align: middle;
+}
+.app-table tbody tr:hover td {
+  background: color-mix(in oklab, var(--color-brass) 7%, transparent);
+}
+
+.doc-a4 {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  background: white;
+  color: #111;
+  padding: 14mm 16mm;
+  font-size: 11px;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.doc-gst {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  background: #fff;
+  color: #111;
+  padding: 12mm;
+  font-size: 10px;
+  line-height: 1.35;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+}
+.doc-gst .doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.doc-gst .doc-table th,
+.doc-gst .doc-table td {
+  border: 0.4pt solid #222;
+  padding: 2px 3px;
+  vertical-align: top;
+  text-align: left;
+}
+.doc-gst .doc-table th {
+  font-weight: 600;
+  background: #f3f3f3;
+  white-space: nowrap !important;
+}
+.doc-gst .doc-table td.tabular,
+.doc-gst .doc-table td.font-mono {
+  white-space: nowrap;
+}
+.doc-gst .tabular {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .doc-a4,
+  .doc-gst {
+    width: auto;
+    min-height: auto;
+    padding: 0;
+    box-shadow: none;
+  }
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+}

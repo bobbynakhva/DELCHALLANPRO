@@ -1,0 +1,6 @@
+{
+  "at": "2026-09-14T06:38:27.870Z",
+  "ist": "2026-09-14-1208",
+  "plantTarget": "postgres",
+  "demoEngine": "pglite (Postgres WASM, not SQLite)"
+}

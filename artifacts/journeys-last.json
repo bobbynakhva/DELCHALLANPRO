@@ -1,0 +1,343 @@
+{
+  "runAt": "2026-09-14T11:09:46.889Z",
+  "passed": 32,
+  "failed": 0,
+  "steps": [
+    {
+      "n": 1,
+      "title": "GRN 1250.500 kg C360 rod → QC hold → release",
+      "pass": true,
+      "note": "GRN/26-27/0001 lot AVAILABLE"
+    },
+    {
+      "n": 2,
+      "title": "SO 10,000 pcs HEX-NIPPLE-1/2-NCR",
+      "pass": true,
+      "note": "SO/26-27/0002"
+    },
+    {
+      "n": 3,
+      "title": "Explode rod kg = 10,000 × 0.048 × 1.08; create WO",
+      "pass": true,
+      "note": "WO/26-27/0001 req 518.400 kg"
+    },
+    {
+      "n": 4,
+      "title": "Issue rod; book 9820 good, 80 reject, 6.400 kg turning",
+      "pass": true,
+      "note": "issued 518.400 kg · good 9820"
+    },
+    {
+      "n": 5,
+      "title": "JW challan 9820 pcs to Kiran Platers; stock in JW-OUT; s.143 due",
+      "pass": true,
+      "note": "JW/26-27/0003"
+    },
+    {
+      "n": 6,
+      "title": "Return 9700 good, 80 reject, 40 short; FG via QC",
+      "pass": true,
+      "note": "DN DN/26-27/0001 · FG LOT-26-00012"
+    },
+    {
+      "n": 7,
+      "title": "Dispatch 5000; packing Σ net kg = invoice Σ net kg",
+      "pass": true,
+      "note": "INV/26-27/0001 240 kg"
+    },
+    {
+      "n": 8,
+      "title": "Change Cu rate; new quote uses it; old quote stays frozen",
+      "pass": true,
+      "note": "Frozen Cu 810 vs live 870"
+    },
+    {
+      "n": 9,
+      "title": "Genealogy from FG lot back to rod lot / heat",
+      "pass": true,
+      "note": "2 RM←FG links"
+    },
+    {
+      "n": 10,
+      "title": "280-day challan on ageing board; Owner kg-outside-factory",
+      "pass": true,
+      "note": "1 aged · outside 137.1000 kg"
+    },
+    {
+      "n": 11,
+      "title": "3-way bill clears GRNI",
+      "pass": true,
+      "note": "GRNI Dr 77531000 Cr 77531000"
+    },
+    {
+      "n": 12,
+      "title": "Invoice + receipt clears that AR",
+      "pass": true,
+      "note": "open AR 0"
+    },
+    {
+      "n": 13,
+      "title": "Intra invoice in GSTR-1 B2B; HSN qty matches",
+      "pass": true,
+      "note": "B2B 1 · HSN qty 5000"
+    },
+    {
+      "n": 14,
+      "title": "JW cycle in ITC-04 4 and 5A",
+      "pass": true,
+      "note": "Table 4 1 · 5A 1"
+    },
+    {
+      "n": 15,
+      "title": "LOCKED month rejects back-dated GRN",
+      "pass": true,
+      "note": "March LOCKED"
+    },
+    {
+      "n": 16,
+      "title": "Trial balance Dr = Cr",
+      "pass": true,
+      "note": "Dr 383139680 Cr 383139680"
+    },
+    {
+      "n": 17,
+      "title": "Regenerated invoice HSN = snapshot after Item.hsn change",
+      "pass": true,
+      "note": "snapshot 74122019"
+    },
+    {
+      "n": 18,
+      "title": "Post intra invoice → IRN + QR on PDF; second generate same IRN",
+      "pass": true,
+      "note": "f57cefbd2780… QR from snapshot"
+    },
+    {
+      "n": 19,
+      "title": "Change Item.hsn after post → payload and PDF still snapshot HSN",
+      "pass": true,
+      "note": "snapshot 74122019 live 999999"
+    },
+    {
+      "n": 20,
+      "title": "Cancel now OK; after simulated 25h cancel blocked → credit-note message",
+      "pass": true,
+      "note": "Cancel window closed. Issue a credit note (s.34)."
+    },
+    {
+      "n": 21,
+      "title": "JW e-way is Job Work not Supply; Part B sets validFrom; kg-outside-factory unchanged",
+      "pass": true,
+      "note": "JW true validFrom true kg 137.1000→137.1000"
+    },
+    {
+      "n": 22,
+      "title": "Charge 100.000 kg dedicated C360 lot → source down, WIP-MELT up",
+      "pass": true,
+      "note": "src 0.000 · WIP 100.000 · JW 137.1000"
+    },
+    {
+      "n": 23,
+      "title": "Spectro fail blocks pour; pass allows pour",
+      "pass": true,
+      "note": "FAIL→HOLD then PASS→RELEASED_POUR"
+    },
+    {
+      "n": 24,
+      "title": "Pour 80 good + 15 runner + 3 dross; close; loss 2.000 to variance; heat CLOSED",
+      "pass": true,
+      "note": "POUR/26-27/0001 loss 2.000 CLOSED"
+    },
+    {
+      "n": 25,
+      "title": "CW617N into C360 refused",
+      "pass": true,
+      "note": "Refuse CW617N lot into a C36000 heat."
+    },
+    {
+      "n": 26,
+      "title": "Genealogy casting lot → heat → charge lot",
+      "pass": true,
+      "note": "LOT-26-00016 heat HT/26-27/0001 ← LOT-26-00014"
+    },
+    {
+      "n": 27,
+      "title": "Trial balance still Dr = Cr after 22–26",
+      "pass": true,
+      "note": "Dr 402359680 Cr 402359680 · JW 137.1000 rod 732.1"
+    },
+    {
+      "n": 28,
+      "title": "OWN 50 kg rod + 10 pcs FG + 5 kg customer metal value 0",
+      "pass": true,
+      "note": "OWN 3137440 · cust 5 kg · JW 137.1000"
+    },
+    {
+      "n": 29,
+      "title": "JW challan dated 90 days before opening; ageing ~90; due = challanDate+365",
+      "pass": true,
+      "note": "JW/25-26/C-0001 age 90d due 2027-06-16"
+    },
+    {
+      "n": 30,
+      "title": "TB squares; inventory = OWN value; RECONCILED",
+      "pass": true,
+      "note": "OWN 3193600 inv 3193600 Dr 405553280"
+    },
+    {
+      "n": 31,
+      "title": "Blocks live GRN before LIVE; allows GRN after LIVE",
+      "pass": true,
+      "note": "GRN/26-27/0002 after LIVE"
+    },
+    {
+      "n": 32,
+      "title": "tally:export files exist; journeys 1–27 still PASS including 10 and 27",
+      "pass": true,
+      "note": "4 files · JW 137.1000 · Tally is not the book of record."
+    }
+  ],
+  "extra": {
+    "statutoryDue": "2027-09-14",
+    "frozenCu": 81000,
+    "liveCu": 87000,
+    "oldQuoteAfter": 81000,
+    "jwSnapshotHasDue": true,
+    "fgLotId": 12,
+    "grnLotId": 8,
+    "tb": {
+      "rows": [
+        {
+          "code": "1110",
+          "name": "Raw material inventory",
+          "type": "ASSET",
+          "debit": 102614500,
+          "credit": 38340800
+        },
+        {
+          "code": "1120",
+          "name": "Scrap inventory",
+          "type": "ASSET",
+          "debit": 3322000,
+          "credit": 0
+        },
+        {
+          "code": "1130",
+          "name": "WIP",
+          "type": "ASSET",
+          "debit": 38340800,
+          "credit": 37360000
+        },
+        {
+          "code": "1135",
+          "name": "SFG inventory",
+          "type": "ASSET",
+          "debit": 63051520,
+          "credit": 29224320
+        },
+        {
+          "code": "1140",
+          "name": "Finished goods",
+          "type": "ASSET",
+          "debit": 476160,
+          "credit": 14880000
+        },
+        {
+          "code": "1150",
+          "name": "JW-OUT (our metal at vendor)",
+          "type": "ASSET",
+          "debit": 39153120,
+          "credit": 29105280
+        },
+        {
+          "code": "2110",
+          "name": "GRN inwards (unbilled)",
+          "type": "LIABILITY",
+          "debit": 77531000,
+          "credit": 77531000
+        },
+        {
+          "code": "2120",
+          "name": "Trade creditors",
+          "type": "LIABILITY",
+          "debit": 0,
+          "credit": 91486580
+        },
+        {
+          "code": "2140",
+          "name": "Output CGST",
+          "type": "LIABILITY",
+          "debit": 0,
+          "credit": 1865250
+        },
+        {
+          "code": "2150",
+          "name": "Output SGST",
+          "type": "LIABILITY",
+          "debit": 0,
+          "credit": 1865250
+        },
+        {
+          "code": "2170",
+          "name": "Input CGST",
+          "type": "ASSET",
+          "debit": 6977790,
+          "credit": 0
+        },
+        {
+          "code": "2180",
+          "name": "Input SGST",
+          "type": "ASSET",
+          "debit": 6977790,
+          "credit": 0
+        },
+        {
+          "code": "2200",
+          "name": "Trade debtors",
+          "type": "ASSET",
+          "debit": 24455500,
+          "credit": 24455500
+        },
+        {
+          "code": "2210",
+          "name": "Bank / cash",
+          "type": "ASSET",
+          "debit": 24455500,
+          "credit": 0
+        },
+        {
+          "code": "3100",
+          "name": "Opening capital",
+          "type": "EQUITY",
+          "debit": 0,
+          "credit": 28700700
+        },
+        {
+          "code": "4110",
+          "name": "Sales — domestic",
+          "type": "INCOME",
+          "debit": 0,
+          "credit": 20725000
+        },
+        {
+          "code": "5110",
+          "name": "Cost of goods sold",
+          "type": "EXPENSE",
+          "debit": 14880000,
+          "credit": 0
+        },
+        {
+          "code": "5120",
+          "name": "Metal / yield variance",
+          "type": "EXPENSE",
+          "debit": 124000,
+          "credit": 6820000
+        }
+      ],
+      "debit": 402359680,
+      "credit": 402359680,
+      "balanced": true
+    },
+    "jwReturnId": 1,
+    "woId": 1
+  }
+}
