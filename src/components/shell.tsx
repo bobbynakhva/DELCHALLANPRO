@@ -27,6 +27,8 @@ const NAV = [
     items: [
       { to: "/", label: "Board", icon: LayoutDashboard },
       { to: "/planning", label: "Planning / MRP", icon: Factory },
+      { to: "/prod-log", label: "Production log (OEE)", icon: Factory },
+      { to: "/maintenance", label: "CNC Maintenance", icon: Wrench },
       { to: "/journeys", label: "32 journeys", icon: ClipboardCheck },
       { to: "/dev/journeys", label: "Journey pack", icon: ClipboardCheck },
       { to: "/shop", label: "Shop booking", icon: Factory },
@@ -36,6 +38,8 @@ const NAV = [
     label: "Stock",
     items: [
       { to: "/stock", label: "On-hand lots", icon: Boxes },
+      { to: "/stn", label: "Store transfer (STN)", icon: Truck },
+      { to: "/qr-labels", label: "Thermal QR Labels", icon: Package },
       { to: "/moves", label: "Stock ledger", icon: Scale },
       { to: "/grn", label: "GRN", icon: Package },
       { to: "/qc", label: "QC release", icon: ClipboardCheck },
@@ -56,6 +60,7 @@ const NAV = [
     label: "Job work & quality",
     items: [
       { to: "/jw", label: "JW OUT / return", icon: Truck },
+      { to: "/subcontract", label: "Plating / Subcontract", icon: Factory },
       { to: "/ncr", label: "NCR", icon: ClipboardCheck },
       { to: "/foundry", label: "Foundry", icon: Factory },
     ],
@@ -64,6 +69,7 @@ const NAV = [
     label: "Books",
     items: [
       { to: "/masters", label: "Masters", icon: Boxes },
+      { to: "/import", label: "CSV Onboarding", icon: FileText },
       { to: "/books", label: "COA / journals", icon: Scale },
       { to: "/audit", label: "Audit / variance", icon: FileText },
       { to: "/cutover", label: "Cutover", icon: FileText },

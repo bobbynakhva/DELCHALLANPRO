@@ -1,5 +1,5 @@
 {
-  "runAt": "2026-09-14T11:09:46.889Z",
+  "runAt": "2026-09-21T05:34:00.030Z",
   "passed": 32,
   "failed": 0,
   "steps": [
@@ -109,7 +109,7 @@
       "n": 18,
       "title": "Post intra invoice → IRN + QR on PDF; second generate same IRN",
       "pass": true,
-      "note": "f57cefbd2780… QR from snapshot"
+      "note": "16b965a100c9… QR from snapshot"
     },
     {
       "n": 19,
@@ -175,7 +175,7 @@
       "n": 29,
       "title": "JW challan dated 90 days before opening; ageing ~90; due = challanDate+365",
       "pass": true,
-      "note": "JW/25-26/C-0001 age 90d due 2027-06-16"
+      "note": "JW/25-26/C-0001 age 90d due 2027-06-23"
     },
     {
       "n": 30,
@@ -197,7 +197,7 @@
     }
   ],
   "extra": {
-    "statutoryDue": "2027-09-14",
+    "statutoryDue": "2027-09-21",
     "frozenCu": 81000,
     "liveCu": 87000,
     "oldQuoteAfter": 81000,

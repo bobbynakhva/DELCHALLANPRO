@@ -26,6 +26,7 @@ export async function erpSql(): Promise<Sql> {
 }
 
 async function seedDemoUsers(sql: Sql): Promise<void> {
+  await loadPerms(sql);
   for (const u of DEMO_USERS) {
     const existing = await sql.query<{ id: string }>(
       `select id from "user" where email = $1`,
@@ -68,6 +69,31 @@ async function seedDemoUsers(sql: Sql): Promise<void> {
   }
 }
 
+let cachedPerms: Record<string, Role[]> = { ...PERMS };
+
+export async function loadPerms(sql: Sql): Promise<Record<string, Role[]>> {
+  try {
+    const s = await setting(sql, "role_permissions", "");
+    if (s) {
+      const parsed = JSON.parse(s);
+      if (parsed && typeof parsed === "object") {
+        cachedPerms = { ...PERMS, ...parsed };
+        return cachedPerms;
+      }
+    }
+  } catch {}
+  cachedPerms = { ...PERMS };
+  return cachedPerms;
+}
+
+export function updateCachedPerms(newPerms: Record<string, Role[]>) {
+  cachedPerms = { ...PERMS, ...newPerms };
+}
+
+export function getCachedPerms(): Record<string, Role[]> {
+  return cachedPerms;
+}
+
 export async function requireStaff(userId: string): Promise<Staff> {
   const sql = await erpSql();
   const rows = await sql.query<Staff>(
@@ -96,7 +122,9 @@ export async function requireStaff(userId: string): Promise<Staff> {
 }
 
 export function assertPerm(staff: Staff, perm: keyof typeof PERMS) {
-  if (!PERMS[perm].includes(staff.role)) {
+  const allowed = cachedPerms[perm] ?? PERMS[perm] ?? [];
+  const isAllowed = staff.role === "OWNER" || staff.role === "ADMIN" || allowed.includes(staff.role);
+  if (!isAllowed) {
     void erpSql()
       .then((sql) =>
         audit(sql, {

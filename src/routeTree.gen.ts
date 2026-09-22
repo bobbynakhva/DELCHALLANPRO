@@ -19,20 +19,26 @@ import { Route as FoundryRouteImport } from './routes/foundry'
 import { Route as GrnRouteImport } from './routes/grn'
 import { Route as GstRouteImport } from './routes/gst'
 import { Route as HealthzRouteImport } from './routes/healthz'
+import { Route as ImportRouteImport } from './routes/import'
 import { Route as JourneysRouteImport } from './routes/journeys'
 import { Route as JwRouteImport } from './routes/jw'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as MaintenanceRouteImport } from './routes/maintenance'
 import { Route as MastersRouteImport } from './routes/masters'
 import { Route as MovesRouteImport } from './routes/moves'
 import { Route as NcrRouteImport } from './routes/ncr'
 import { Route as PlanningRouteImport } from './routes/planning'
 import { Route as PoRouteImport } from './routes/po'
+import { Route as ProdLogRouteImport } from './routes/prod-log'
 import { Route as QcRouteImport } from './routes/qc'
+import { Route as QrLabelsRouteImport } from './routes/qr-labels'
 import { Route as QuotesRouteImport } from './routes/quotes'
 import { Route as RegistersRouteImport } from './routes/registers'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SoRouteImport } from './routes/so'
+import { Route as StnRouteImport } from './routes/stn'
 import { Route as StockRouteImport } from './routes/stock'
+import { Route as SubcontractRouteImport } from './routes/subcontract'
 import { Route as WoRouteImport } from './routes/wo'
 import { Route as AdminPermissionsRouteImport } from './routes/admin.permissions'
 import { Route as DevDocsRouteImport } from './routes/dev.docs'
@@ -40,13 +46,13 @@ import { Route as DevJourneysRouteImport } from './routes/dev.journeys'
 import { Route as GenealogyLotIdRouteImport } from './routes/genealogy.$lotId'
 import { Route as PrintCutoverPackRouteImport } from './routes/print.cutover-pack'
 import { Route as SettingsGstRouteImport } from './routes/settings.gst'
-import { Route as StockIndexRouteImport } from './routes/stock.index'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 import { Route as DevDocsIndexRouteImport } from './routes/dev.docs.index'
 import { Route as DevDocsSlugRouteImport } from './routes/dev.docs.$slug'
 import { Route as PrintChallanIdRouteImport } from './routes/print.challan.$id'
 import { Route as PrintCnIdRouteImport } from './routes/print.cn.$id'
 import { Route as PrintCocIdRouteImport } from './routes/print.coc.$id'
+import { Route as PrintDcIdRouteImport } from './routes/print.dc.$id'
 import { Route as PrintDnIdRouteImport } from './routes/print.dn.$id'
 import { Route as PrintEwayIdRouteImport } from './routes/print.eway.$id'
 import { Route as PrintGrnIdRouteImport } from './routes/print.grn.$id'
@@ -54,9 +60,12 @@ import { Route as PrintInvoiceIdRouteImport } from './routes/print.invoice.$id'
 import { Route as PrintKnockoutIdRouteImport } from './routes/print.knockout.$id'
 import { Route as PrintOpeningJwIdRouteImport } from './routes/print.opening-jw.$id'
 import { Route as PrintPackingIdRouteImport } from './routes/print.packing.$id'
+import { Route as PrintPoIdRouteImport } from './routes/print.po.$id'
 import { Route as PrintPourIdRouteImport } from './routes/print.pour.$id'
+import { Route as PrintQrLotIdRouteImport } from './routes/print.qr.$lotId'
 import { Route as PrintQuoteIdRouteImport } from './routes/print.quote.$id'
 import { Route as PrintReturnIdRouteImport } from './routes/print.return.$id'
+import { Route as PrintShippingBillIdRouteImport } from './routes/print.shipping-bill.$id'
 import { Route as StockLotsLotIdGenealogyRouteImport } from './routes/stock.lots.$lotId.genealogy'
 
 const IndexRoute = IndexRouteImport.update({
@@ -109,6 +118,11 @@ const HealthzRoute = HealthzRouteImport.update({
   path: '/healthz',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ImportRoute = ImportRouteImport.update({
+  id: '/import',
+  path: '/import',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const JourneysRoute = JourneysRouteImport.update({
   id: '/journeys',
   path: '/journeys',
@@ -122,6 +136,11 @@ const JwRoute = JwRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MaintenanceRoute = MaintenanceRouteImport.update({
+  id: '/maintenance',
+  path: '/maintenance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MastersRoute = MastersRouteImport.update({
@@ -149,9 +168,19 @@ const PoRoute = PoRouteImport.update({
   path: '/po',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProdLogRoute = ProdLogRouteImport.update({
+  id: '/prod-log',
+  path: '/prod-log',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const QcRoute = QcRouteImport.update({
   id: '/qc',
   path: '/qc',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QrLabelsRoute = QrLabelsRouteImport.update({
+  id: '/qr-labels',
+  path: '/qr-labels',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QuotesRoute = QuotesRouteImport.update({
@@ -174,9 +203,19 @@ const SoRoute = SoRouteImport.update({
   path: '/so',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StnRoute = StnRouteImport.update({
+  id: '/stn',
+  path: '/stn',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StockRoute = StockRouteImport.update({
   id: '/stock',
   path: '/stock',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SubcontractRoute = SubcontractRouteImport.update({
+  id: '/subcontract',
+  path: '/subcontract',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WoRoute = WoRouteImport.update({
@@ -214,11 +253,6 @@ const SettingsGstRoute = SettingsGstRouteImport.update({
   path: '/settings/gst',
   getParentRoute: () => rootRouteImport,
 } as any)
-const StockIndexRoute = StockIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => StockRoute,
-} as any)
 const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   id: '/api/auth/$',
   path: '/api/auth/$',
@@ -247,6 +281,11 @@ const PrintCnIdRoute = PrintCnIdRouteImport.update({
 const PrintCocIdRoute = PrintCocIdRouteImport.update({
   id: '/print/coc/$id',
   path: '/print/coc/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrintDcIdRoute = PrintDcIdRouteImport.update({
+  id: '/print/dc/$id',
+  path: '/print/dc/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrintDnIdRoute = PrintDnIdRouteImport.update({
@@ -284,9 +323,19 @@ const PrintPackingIdRoute = PrintPackingIdRouteImport.update({
   path: '/print/packing/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrintPoIdRoute = PrintPoIdRouteImport.update({
+  id: '/print/po/$id',
+  path: '/print/po/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrintPourIdRoute = PrintPourIdRouteImport.update({
   id: '/print/pour/$id',
   path: '/print/pour/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrintQrLotIdRoute = PrintQrLotIdRouteImport.update({
+  id: '/print/qr/$lotId',
+  path: '/print/qr/$lotId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrintQuoteIdRoute = PrintQuoteIdRouteImport.update({
@@ -297,6 +346,11 @@ const PrintQuoteIdRoute = PrintQuoteIdRouteImport.update({
 const PrintReturnIdRoute = PrintReturnIdRouteImport.update({
   id: '/print/return/$id',
   path: '/print/return/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrintShippingBillIdRoute = PrintShippingBillIdRouteImport.update({
+  id: '/print/shipping-bill/$id',
+  path: '/print/shipping-bill/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StockLotsLotIdGenealogyRoute = StockLotsLotIdGenealogyRouteImport.update({
@@ -316,20 +370,26 @@ export interface FileRoutesByFullPath {
   '/grn': typeof GrnRoute
   '/gst': typeof GstRoute
   '/healthz': typeof HealthzRoute
+  '/import': typeof ImportRoute
   '/journeys': typeof JourneysRoute
   '/jw': typeof JwRoute
   '/login': typeof LoginRoute
+  '/maintenance': typeof MaintenanceRoute
   '/masters': typeof MastersRoute
   '/moves': typeof MovesRoute
   '/ncr': typeof NcrRoute
   '/planning': typeof PlanningRoute
   '/po': typeof PoRoute
+  '/prod-log': typeof ProdLogRoute
   '/qc': typeof QcRoute
+  '/qr-labels': typeof QrLabelsRoute
   '/quotes': typeof QuotesRoute
   '/registers': typeof RegistersRoute
   '/shop': typeof ShopRoute
   '/so': typeof SoRoute
+  '/stn': typeof StnRoute
   '/stock': typeof StockRouteWithChildren
+  '/subcontract': typeof SubcontractRoute
   '/wo': typeof WoRoute
   '/admin/permissions': typeof AdminPermissionsRoute
   '/dev/docs': typeof DevDocsRouteWithChildren
@@ -337,12 +397,12 @@ export interface FileRoutesByFullPath {
   '/genealogy/$lotId': typeof GenealogyLotIdRoute
   '/print/cutover-pack': typeof PrintCutoverPackRoute
   '/settings/gst': typeof SettingsGstRoute
-  '/stock/': typeof StockIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/dev/docs/$slug': typeof DevDocsSlugRoute
   '/print/challan/$id': typeof PrintChallanIdRoute
   '/print/cn/$id': typeof PrintCnIdRoute
   '/print/coc/$id': typeof PrintCocIdRoute
+  '/print/dc/$id': typeof PrintDcIdRoute
   '/print/dn/$id': typeof PrintDnIdRoute
   '/print/eway/$id': typeof PrintEwayIdRoute
   '/print/grn/$id': typeof PrintGrnIdRoute
@@ -350,9 +410,12 @@ export interface FileRoutesByFullPath {
   '/print/knockout/$id': typeof PrintKnockoutIdRoute
   '/print/opening-jw/$id': typeof PrintOpeningJwIdRoute
   '/print/packing/$id': typeof PrintPackingIdRoute
+  '/print/po/$id': typeof PrintPoIdRoute
   '/print/pour/$id': typeof PrintPourIdRoute
+  '/print/qr/$lotId': typeof PrintQrLotIdRoute
   '/print/quote/$id': typeof PrintQuoteIdRoute
   '/print/return/$id': typeof PrintReturnIdRoute
+  '/print/shipping-bill/$id': typeof PrintShippingBillIdRoute
   '/dev/docs/': typeof DevDocsIndexRoute
   '/stock/lots/$lotId/genealogy': typeof StockLotsLotIdGenealogyRoute
 }
@@ -367,31 +430,38 @@ export interface FileRoutesByTo {
   '/grn': typeof GrnRoute
   '/gst': typeof GstRoute
   '/healthz': typeof HealthzRoute
+  '/import': typeof ImportRoute
   '/journeys': typeof JourneysRoute
   '/jw': typeof JwRoute
   '/login': typeof LoginRoute
+  '/maintenance': typeof MaintenanceRoute
   '/masters': typeof MastersRoute
   '/moves': typeof MovesRoute
   '/ncr': typeof NcrRoute
   '/planning': typeof PlanningRoute
   '/po': typeof PoRoute
+  '/prod-log': typeof ProdLogRoute
   '/qc': typeof QcRoute
+  '/qr-labels': typeof QrLabelsRoute
   '/quotes': typeof QuotesRoute
   '/registers': typeof RegistersRoute
   '/shop': typeof ShopRoute
   '/so': typeof SoRoute
+  '/stn': typeof StnRoute
+  '/stock': typeof StockRouteWithChildren
+  '/subcontract': typeof SubcontractRoute
   '/wo': typeof WoRoute
   '/admin/permissions': typeof AdminPermissionsRoute
   '/dev/journeys': typeof DevJourneysRoute
   '/genealogy/$lotId': typeof GenealogyLotIdRoute
   '/print/cutover-pack': typeof PrintCutoverPackRoute
   '/settings/gst': typeof SettingsGstRoute
-  '/stock': typeof StockIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/dev/docs/$slug': typeof DevDocsSlugRoute
   '/print/challan/$id': typeof PrintChallanIdRoute
   '/print/cn/$id': typeof PrintCnIdRoute
   '/print/coc/$id': typeof PrintCocIdRoute
+  '/print/dc/$id': typeof PrintDcIdRoute
   '/print/dn/$id': typeof PrintDnIdRoute
   '/print/eway/$id': typeof PrintEwayIdRoute
   '/print/grn/$id': typeof PrintGrnIdRoute
@@ -399,9 +469,12 @@ export interface FileRoutesByTo {
   '/print/knockout/$id': typeof PrintKnockoutIdRoute
   '/print/opening-jw/$id': typeof PrintOpeningJwIdRoute
   '/print/packing/$id': typeof PrintPackingIdRoute
+  '/print/po/$id': typeof PrintPoIdRoute
   '/print/pour/$id': typeof PrintPourIdRoute
+  '/print/qr/$lotId': typeof PrintQrLotIdRoute
   '/print/quote/$id': typeof PrintQuoteIdRoute
   '/print/return/$id': typeof PrintReturnIdRoute
+  '/print/shipping-bill/$id': typeof PrintShippingBillIdRoute
   '/dev/docs': typeof DevDocsIndexRoute
   '/stock/lots/$lotId/genealogy': typeof StockLotsLotIdGenealogyRoute
 }
@@ -417,20 +490,26 @@ export interface FileRoutesById {
   '/grn': typeof GrnRoute
   '/gst': typeof GstRoute
   '/healthz': typeof HealthzRoute
+  '/import': typeof ImportRoute
   '/journeys': typeof JourneysRoute
   '/jw': typeof JwRoute
   '/login': typeof LoginRoute
+  '/maintenance': typeof MaintenanceRoute
   '/masters': typeof MastersRoute
   '/moves': typeof MovesRoute
   '/ncr': typeof NcrRoute
   '/planning': typeof PlanningRoute
   '/po': typeof PoRoute
+  '/prod-log': typeof ProdLogRoute
   '/qc': typeof QcRoute
+  '/qr-labels': typeof QrLabelsRoute
   '/quotes': typeof QuotesRoute
   '/registers': typeof RegistersRoute
   '/shop': typeof ShopRoute
   '/so': typeof SoRoute
+  '/stn': typeof StnRoute
   '/stock': typeof StockRouteWithChildren
+  '/subcontract': typeof SubcontractRoute
   '/wo': typeof WoRoute
   '/admin/permissions': typeof AdminPermissionsRoute
   '/dev/docs': typeof DevDocsRouteWithChildren
@@ -438,12 +517,12 @@ export interface FileRoutesById {
   '/genealogy/$lotId': typeof GenealogyLotIdRoute
   '/print/cutover-pack': typeof PrintCutoverPackRoute
   '/settings/gst': typeof SettingsGstRoute
-  '/stock/': typeof StockIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/dev/docs/$slug': typeof DevDocsSlugRoute
   '/print/challan/$id': typeof PrintChallanIdRoute
   '/print/cn/$id': typeof PrintCnIdRoute
   '/print/coc/$id': typeof PrintCocIdRoute
+  '/print/dc/$id': typeof PrintDcIdRoute
   '/print/dn/$id': typeof PrintDnIdRoute
   '/print/eway/$id': typeof PrintEwayIdRoute
   '/print/grn/$id': typeof PrintGrnIdRoute
@@ -451,9 +530,12 @@ export interface FileRoutesById {
   '/print/knockout/$id': typeof PrintKnockoutIdRoute
   '/print/opening-jw/$id': typeof PrintOpeningJwIdRoute
   '/print/packing/$id': typeof PrintPackingIdRoute
+  '/print/po/$id': typeof PrintPoIdRoute
   '/print/pour/$id': typeof PrintPourIdRoute
+  '/print/qr/$lotId': typeof PrintQrLotIdRoute
   '/print/quote/$id': typeof PrintQuoteIdRoute
   '/print/return/$id': typeof PrintReturnIdRoute
+  '/print/shipping-bill/$id': typeof PrintShippingBillIdRoute
   '/dev/docs/': typeof DevDocsIndexRoute
   '/stock/lots/$lotId/genealogy': typeof StockLotsLotIdGenealogyRoute
 }
@@ -470,20 +552,26 @@ export interface FileRouteTypes {
     | '/grn'
     | '/gst'
     | '/healthz'
+    | '/import'
     | '/journeys'
     | '/jw'
     | '/login'
+    | '/maintenance'
     | '/masters'
     | '/moves'
     | '/ncr'
     | '/planning'
     | '/po'
+    | '/prod-log'
     | '/qc'
+    | '/qr-labels'
     | '/quotes'
     | '/registers'
     | '/shop'
     | '/so'
+    | '/stn'
     | '/stock'
+    | '/subcontract'
     | '/wo'
     | '/admin/permissions'
     | '/dev/docs'
@@ -491,12 +579,12 @@ export interface FileRouteTypes {
     | '/genealogy/$lotId'
     | '/print/cutover-pack'
     | '/settings/gst'
-    | '/stock/'
     | '/api/auth/$'
     | '/dev/docs/$slug'
     | '/print/challan/$id'
     | '/print/cn/$id'
     | '/print/coc/$id'
+    | '/print/dc/$id'
     | '/print/dn/$id'
     | '/print/eway/$id'
     | '/print/grn/$id'
@@ -504,9 +592,12 @@ export interface FileRouteTypes {
     | '/print/knockout/$id'
     | '/print/opening-jw/$id'
     | '/print/packing/$id'
+    | '/print/po/$id'
     | '/print/pour/$id'
+    | '/print/qr/$lotId'
     | '/print/quote/$id'
     | '/print/return/$id'
+    | '/print/shipping-bill/$id'
     | '/dev/docs/'
     | '/stock/lots/$lotId/genealogy'
   fileRoutesByTo: FileRoutesByTo
@@ -521,31 +612,38 @@ export interface FileRouteTypes {
     | '/grn'
     | '/gst'
     | '/healthz'
+    | '/import'
     | '/journeys'
     | '/jw'
     | '/login'
+    | '/maintenance'
     | '/masters'
     | '/moves'
     | '/ncr'
     | '/planning'
     | '/po'
+    | '/prod-log'
     | '/qc'
+    | '/qr-labels'
     | '/quotes'
     | '/registers'
     | '/shop'
     | '/so'
+    | '/stn'
+    | '/stock'
+    | '/subcontract'
     | '/wo'
     | '/admin/permissions'
     | '/dev/journeys'
     | '/genealogy/$lotId'
     | '/print/cutover-pack'
     | '/settings/gst'
-    | '/stock'
     | '/api/auth/$'
     | '/dev/docs/$slug'
     | '/print/challan/$id'
     | '/print/cn/$id'
     | '/print/coc/$id'
+    | '/print/dc/$id'
     | '/print/dn/$id'
     | '/print/eway/$id'
     | '/print/grn/$id'
@@ -553,9 +651,12 @@ export interface FileRouteTypes {
     | '/print/knockout/$id'
     | '/print/opening-jw/$id'
     | '/print/packing/$id'
+    | '/print/po/$id'
     | '/print/pour/$id'
+    | '/print/qr/$lotId'
     | '/print/quote/$id'
     | '/print/return/$id'
+    | '/print/shipping-bill/$id'
     | '/dev/docs'
     | '/stock/lots/$lotId/genealogy'
   id:
@@ -570,20 +671,26 @@ export interface FileRouteTypes {
     | '/grn'
     | '/gst'
     | '/healthz'
+    | '/import'
     | '/journeys'
     | '/jw'
     | '/login'
+    | '/maintenance'
     | '/masters'
     | '/moves'
     | '/ncr'
     | '/planning'
     | '/po'
+    | '/prod-log'
     | '/qc'
+    | '/qr-labels'
     | '/quotes'
     | '/registers'
     | '/shop'
     | '/so'
+    | '/stn'
     | '/stock'
+    | '/subcontract'
     | '/wo'
     | '/admin/permissions'
     | '/dev/docs'
@@ -591,12 +698,12 @@ export interface FileRouteTypes {
     | '/genealogy/$lotId'
     | '/print/cutover-pack'
     | '/settings/gst'
-    | '/stock/'
     | '/api/auth/$'
     | '/dev/docs/$slug'
     | '/print/challan/$id'
     | '/print/cn/$id'
     | '/print/coc/$id'
+    | '/print/dc/$id'
     | '/print/dn/$id'
     | '/print/eway/$id'
     | '/print/grn/$id'
@@ -604,9 +711,12 @@ export interface FileRouteTypes {
     | '/print/knockout/$id'
     | '/print/opening-jw/$id'
     | '/print/packing/$id'
+    | '/print/po/$id'
     | '/print/pour/$id'
+    | '/print/qr/$lotId'
     | '/print/quote/$id'
     | '/print/return/$id'
+    | '/print/shipping-bill/$id'
     | '/dev/docs/'
     | '/stock/lots/$lotId/genealogy'
   fileRoutesById: FileRoutesById
@@ -622,20 +732,26 @@ export interface RootRouteChildren {
   GrnRoute: typeof GrnRoute
   GstRoute: typeof GstRoute
   HealthzRoute: typeof HealthzRoute
+  ImportRoute: typeof ImportRoute
   JourneysRoute: typeof JourneysRoute
   JwRoute: typeof JwRoute
   LoginRoute: typeof LoginRoute
+  MaintenanceRoute: typeof MaintenanceRoute
   MastersRoute: typeof MastersRoute
   MovesRoute: typeof MovesRoute
   NcrRoute: typeof NcrRoute
   PlanningRoute: typeof PlanningRoute
   PoRoute: typeof PoRoute
+  ProdLogRoute: typeof ProdLogRoute
   QcRoute: typeof QcRoute
+  QrLabelsRoute: typeof QrLabelsRoute
   QuotesRoute: typeof QuotesRoute
   RegistersRoute: typeof RegistersRoute
   ShopRoute: typeof ShopRoute
   SoRoute: typeof SoRoute
+  StnRoute: typeof StnRoute
   StockRoute: typeof StockRouteWithChildren
+  SubcontractRoute: typeof SubcontractRoute
   WoRoute: typeof WoRoute
   AdminPermissionsRoute: typeof AdminPermissionsRoute
   DevDocsRoute: typeof DevDocsRouteWithChildren
@@ -647,6 +763,7 @@ export interface RootRouteChildren {
   PrintChallanIdRoute: typeof PrintChallanIdRoute
   PrintCnIdRoute: typeof PrintCnIdRoute
   PrintCocIdRoute: typeof PrintCocIdRoute
+  PrintDcIdRoute: typeof PrintDcIdRoute
   PrintDnIdRoute: typeof PrintDnIdRoute
   PrintEwayIdRoute: typeof PrintEwayIdRoute
   PrintGrnIdRoute: typeof PrintGrnIdRoute
@@ -654,9 +771,12 @@ export interface RootRouteChildren {
   PrintKnockoutIdRoute: typeof PrintKnockoutIdRoute
   PrintOpeningJwIdRoute: typeof PrintOpeningJwIdRoute
   PrintPackingIdRoute: typeof PrintPackingIdRoute
+  PrintPoIdRoute: typeof PrintPoIdRoute
   PrintPourIdRoute: typeof PrintPourIdRoute
+  PrintQrLotIdRoute: typeof PrintQrLotIdRoute
   PrintQuoteIdRoute: typeof PrintQuoteIdRoute
   PrintReturnIdRoute: typeof PrintReturnIdRoute
+  PrintShippingBillIdRoute: typeof PrintShippingBillIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -731,6 +851,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HealthzRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/import': {
+      id: '/import'
+      path: '/import'
+      fullPath: '/import'
+      preLoaderRoute: typeof ImportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/journeys': {
       id: '/journeys'
       path: '/journeys'
@@ -750,6 +877,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/maintenance': {
+      id: '/maintenance'
+      path: '/maintenance'
+      fullPath: '/maintenance'
+      preLoaderRoute: typeof MaintenanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/masters': {
@@ -787,11 +921,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/prod-log': {
+      id: '/prod-log'
+      path: '/prod-log'
+      fullPath: '/prod-log'
+      preLoaderRoute: typeof ProdLogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/qc': {
       id: '/qc'
       path: '/qc'
       fullPath: '/qc'
       preLoaderRoute: typeof QcRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qr-labels': {
+      id: '/qr-labels'
+      path: '/qr-labels'
+      fullPath: '/qr-labels'
+      preLoaderRoute: typeof QrLabelsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/quotes': {
@@ -822,11 +970,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/stn': {
+      id: '/stn'
+      path: '/stn'
+      fullPath: '/stn'
+      preLoaderRoute: typeof StnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/stock': {
       id: '/stock'
       path: '/stock'
       fullPath: '/stock'
       preLoaderRoute: typeof StockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/subcontract': {
+      id: '/subcontract'
+      path: '/subcontract'
+      fullPath: '/subcontract'
+      preLoaderRoute: typeof SubcontractRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/wo': {
@@ -878,13 +1040,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsGstRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/stock/': {
-      id: '/stock/'
-      path: '/'
-      fullPath: '/stock/'
-      preLoaderRoute: typeof StockIndexRouteImport
-      parentRoute: typeof StockRoute
-    }
     '/api/auth/$': {
       id: '/api/auth/$'
       path: '/api/auth/$'
@@ -925,6 +1080,13 @@ declare module '@tanstack/react-router' {
       path: '/print/coc/$id'
       fullPath: '/print/coc/$id'
       preLoaderRoute: typeof PrintCocIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/print/dc/$id': {
+      id: '/print/dc/$id'
+      path: '/print/dc/$id'
+      fullPath: '/print/dc/$id'
+      preLoaderRoute: typeof PrintDcIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/print/dn/$id': {
@@ -976,11 +1138,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrintPackingIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/print/po/$id': {
+      id: '/print/po/$id'
+      path: '/print/po/$id'
+      fullPath: '/print/po/$id'
+      preLoaderRoute: typeof PrintPoIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/print/pour/$id': {
       id: '/print/pour/$id'
       path: '/print/pour/$id'
       fullPath: '/print/pour/$id'
       preLoaderRoute: typeof PrintPourIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/print/qr/$lotId': {
+      id: '/print/qr/$lotId'
+      path: '/print/qr/$lotId'
+      fullPath: '/print/qr/$lotId'
+      preLoaderRoute: typeof PrintQrLotIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/print/quote/$id': {
@@ -997,6 +1173,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrintReturnIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/print/shipping-bill/$id': {
+      id: '/print/shipping-bill/$id'
+      path: '/print/shipping-bill/$id'
+      fullPath: '/print/shipping-bill/$id'
+      preLoaderRoute: typeof PrintShippingBillIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/stock/lots/$lotId/genealogy': {
       id: '/stock/lots/$lotId/genealogy'
       path: '/lots/$lotId/genealogy'
@@ -1008,12 +1191,10 @@ declare module '@tanstack/react-router' {
 }
 
 interface StockRouteChildren {
-  StockIndexRoute: typeof StockIndexRoute
   StockLotsLotIdGenealogyRoute: typeof StockLotsLotIdGenealogyRoute
 }
 
 const StockRouteChildren: StockRouteChildren = {
-  StockIndexRoute: StockIndexRoute,
   StockLotsLotIdGenealogyRoute: StockLotsLotIdGenealogyRoute,
 }
 
@@ -1043,20 +1224,26 @@ const rootRouteChildren: RootRouteChildren = {
   GrnRoute: GrnRoute,
   GstRoute: GstRoute,
   HealthzRoute: HealthzRoute,
+  ImportRoute: ImportRoute,
   JourneysRoute: JourneysRoute,
   JwRoute: JwRoute,
   LoginRoute: LoginRoute,
+  MaintenanceRoute: MaintenanceRoute,
   MastersRoute: MastersRoute,
   MovesRoute: MovesRoute,
   NcrRoute: NcrRoute,
   PlanningRoute: PlanningRoute,
   PoRoute: PoRoute,
+  ProdLogRoute: ProdLogRoute,
   QcRoute: QcRoute,
+  QrLabelsRoute: QrLabelsRoute,
   QuotesRoute: QuotesRoute,
   RegistersRoute: RegistersRoute,
   ShopRoute: ShopRoute,
   SoRoute: SoRoute,
+  StnRoute: StnRoute,
   StockRoute: StockRouteWithChildren,
+  SubcontractRoute: SubcontractRoute,
   WoRoute: WoRoute,
   AdminPermissionsRoute: AdminPermissionsRoute,
   DevDocsRoute: DevDocsRouteWithChildren,
@@ -1068,6 +1255,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrintChallanIdRoute: PrintChallanIdRoute,
   PrintCnIdRoute: PrintCnIdRoute,
   PrintCocIdRoute: PrintCocIdRoute,
+  PrintDcIdRoute: PrintDcIdRoute,
   PrintDnIdRoute: PrintDnIdRoute,
   PrintEwayIdRoute: PrintEwayIdRoute,
   PrintGrnIdRoute: PrintGrnIdRoute,
@@ -1075,9 +1263,12 @@ const rootRouteChildren: RootRouteChildren = {
   PrintKnockoutIdRoute: PrintKnockoutIdRoute,
   PrintOpeningJwIdRoute: PrintOpeningJwIdRoute,
   PrintPackingIdRoute: PrintPackingIdRoute,
+  PrintPoIdRoute: PrintPoIdRoute,
   PrintPourIdRoute: PrintPourIdRoute,
+  PrintQrLotIdRoute: PrintQrLotIdRoute,
   PrintQuoteIdRoute: PrintQuoteIdRoute,
   PrintReturnIdRoute: PrintReturnIdRoute,
+  PrintShippingBillIdRoute: PrintShippingBillIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

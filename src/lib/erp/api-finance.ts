@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { authMiddleware } from "@/lib/auth/middleware";
-import { assertPerm, audit, erpSql, nextDoc, requireStaff } from "./core.server";
+import { assertPerm, audit, erpSql, nextDoc, requireStaff, getCachedPerms, loadPerms, updateCachedPerms } from "./core.server";
 import { n, todayISO } from "./format";
 import { uid, type Row } from "./row";
 import {
@@ -391,7 +391,7 @@ export const listArAp = createServerFn({ method: "GET" })
         order by inv.id desc limit 50`,
     );
     const bills = await sql.query<Row>(
-      `select b.*, p.name as partner_name, p.is_msme,
+      `select b.*, p.name as partner_name, p.is_msme, p.vendor_type,
               case
                 when current_date <= b.due_date then '0-45'
                 when current_date <= b.due_date + 45 then '46-90'
@@ -610,12 +610,45 @@ export const getGstWorksheets = createServerFn({ method: "GET" })
 export const getPermissionsMatrix = createServerFn({ method: "GET" })
   .middleware(auth)
   .handler(async ({ context }) => {
-    await requireStaff(uid(context));
-    const { PERMS, ROLES, ROLE_LABEL } = await import("./constants");
-    const denials = await (await erpSql()).query<Row>(
+    const staff = await requireStaff(uid(context));
+    const sql = await erpSql();
+    await loadPerms(sql);
+    const { ROLES, ROLE_LABEL } = await import("./constants");
+    const perms = getCachedPerms();
+    const denials = await sql.query<Row>(
       `select at, user_id, entity, after_json from audit_log where action = 'PERM_DENY' order by id desc limit 40`,
     );
-    return { perms: PERMS, roles: ROLES, labels: ROLE_LABEL, denials };
+    const isEditable = staff.role === "OWNER" || staff.role === "ADMIN";
+    return { perms, roles: ROLES, labels: ROLE_LABEL, denials, isEditable };
+  });
+
+export const updatePermissionsMatrix = createServerFn({ method: "POST" })
+  .middleware(auth)
+  .validator(
+    z.object({
+      perms: z.record(z.string(), z.array(z.string())),
+    })
+  )
+  .handler(async ({ context, data }) => {
+    const staff = await requireStaff(uid(context));
+    if (staff.role !== "OWNER" && staff.role !== "ADMIN") {
+      throw new Error("Only Owner or Admin can modify the permissions matrix");
+    }
+    const sql = await erpSql();
+    const jsonStr = JSON.stringify(data.perms);
+    await sql.query(
+      `insert into settings (key, value) values ('role_permissions', $1)
+       on conflict (key) do update set value = excluded.value`,
+      [jsonStr]
+    );
+    updateCachedPerms(data.perms as any);
+    await audit(sql, {
+      userId: staff.user_id,
+      action: "PERM_MATRIX_UPDATE",
+      entity: "role_permissions",
+      after: data.perms,
+    });
+    return { ok: true };
   });
 
 export const getHealthz = createServerFn({ method: "GET" }).handler(async () => {
