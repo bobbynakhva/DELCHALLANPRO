@@ -104,9 +104,9 @@ const LOCAL_DEV_ORIGINS: string[] = [
   "http://[::1]:8080",
 ];
 const baseURL = explicitBaseURL ?? {
-  // Include loopback hosts so dynamic baseURL resolves for local email/password
-  // (not only the preview wildcard).
-  allowedHosts: [...previewAllowedHosts, "localhost", "127.0.0.1", "[::1]"],
+  // Include loopback hosts and wildcard so dynamic baseURL resolves for local email/password
+  // as well as custom deployed domains (Hostinger, etc.).
+  allowedHosts: ["*", ...previewAllowedHosts, "localhost", "127.0.0.1", "[::1]"],
   // `auto` → trust both http:// and https:// expansions of allowedHosts
   // (preview is https; local dev is http).
   protocol: "auto" as const,
@@ -115,15 +115,43 @@ const baseURL = explicitBaseURL ?? {
 
 // Origins Better Auth accepts on credentialed POSTs (sign-up/sign-in, etc.).
 // Missing entries here surface as FORBIDDEN "Invalid origin".
-const trustedOrigins: string[] = explicitBaseURL
-  ? [explicitBaseURL, ...LOCAL_DEV_ORIGINS]
-  : [
-      // Host wildcards (matched against Origin's host)
-      ...previewAllowedHosts,
-      // Full-origin wildcards (matched against Origin)
-      ...previewAllowedHosts.flatMap((host) => [`https://${host}`, `http://${host}`]),
-      ...LOCAL_DEV_ORIGINS,
-    ];
+const trustedOrigins = (req?: Request): string[] => {
+  const origins = new Set<string>([
+    ...(explicitBaseURL ? [explicitBaseURL] : []),
+    ...previewAllowedHosts,
+    ...previewAllowedHosts.flatMap((host) => [`https://${host}`, `http://${host}`]),
+    ...LOCAL_DEV_ORIGINS,
+    "*",
+  ]);
+
+  if (req) {
+    const origin = req.headers.get("origin");
+    if (origin) origins.add(origin);
+
+    const referer = req.headers.get("referer");
+    if (referer) {
+      try {
+        origins.add(new URL(referer).origin);
+      } catch {}
+    }
+
+    const host = req.headers.get("x-forwarded-host") || req.headers.get("host");
+    const proto = req.headers.get("x-forwarded-proto") || "https";
+    if (host) {
+      origins.add(`${proto}://${host}`);
+      origins.add(`http://${host}`);
+      origins.add(`https://${host}`);
+    }
+  }
+
+  if (process.env.TRUSTED_ORIGINS) {
+    for (const item of process.env.TRUSTED_ORIGINS.split(",")) {
+      if (item.trim()) origins.add(item.trim());
+    }
+  }
+
+  return Array.from(origins);
+};
 
 const databaseUrl = env("DATABASE_URL");
 
